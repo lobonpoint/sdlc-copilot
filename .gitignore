@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Local scratch — do NOT commit in-flight project artifacts here.
+# See sdlc-copilot/projects/README.md for where project artifacts belong.
+scratch/
+*.local.md
+
+# Never commit these by default; sensitive organizational data needs explicit review.
+*.csv
+*.xlsx

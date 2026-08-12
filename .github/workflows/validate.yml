@@ -1,0 +1,29 @@
+# Runs the skill validation on every PR touching skills, prompts, or the registry.
+#
+# The rules this enforces fail SILENTLY otherwise — a skill whose folder name does
+# not match its `name` field simply never loads, with no error anywhere.
+#
+# If GitHub Actions is not enabled on this enterprise instance, delete this file and
+# run sdlc-copilot/scripts/validate-skills.sh as a pre-commit hook or a manual review step instead.
+#
+# v0.1.0 · created 2026-08-06 · updated 2026-08-06 · owner TBD
+
+name: Validate skills
+
+on:
+  pull_request:
+    paths:
+      - '.github/skills/**'
+      - '.github/prompts/**'
+      - '.github/copilot-instructions.md'
+      - 'sdlc-copilot/SKILLS.md'
+      - 'sdlc-copilot/scripts/validate-skills.sh'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate against the Agent Skills specification
+        run: bash sdlc-copilot/scripts/validate-skills.sh

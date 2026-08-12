@@ -1,0 +1,44 @@
+# CODEOWNERS — ownership made enforceable
+#
+# This file turns the persona ownership model into a GitHub-enforced review
+# requirement. A change to a persona's namespace requires that persona's team.
+#
+# Replace @placeholders with real GitHub teams or usernames before enabling
+# branch protection. Until then this file documents intent only.
+#
+# v0.1.0 · created 2026-08-06 · updated 2026-08-06 · owner TBD
+
+# ---- Default ----
+*                                       @framework-owners
+
+# ---- Persona namespaces: each team owns its own ----
+/.github/skills/sdlc-po-*/              @product-owners
+/.github/prompts/sdlc-po-*              @product-owners
+
+/.github/skills/sdlc-arch-*/            @solution-architects
+/.github/prompts/sdlc-arch-*            @solution-architects
+
+/.github/skills/sdlc-dev-*/             @dev-leads
+/.github/prompts/sdlc-dev-*             @dev-leads
+
+/.github/skills/sdlc-qe-*/              @qe-leads
+/.github/prompts/sdlc-qe-*              @qe-leads
+
+/.github/skills/sdlc-ops-*/             @devops-leads
+/.github/prompts/sdlc-ops-*             @devops-leads
+
+# ---- Shared surfaces: framework-owner review required ----
+# These are what every other skill depends on. Changing them affects everyone.
+/.github/copilot-instructions.md        @framework-owners
+/.github/CODEOWNERS                     @framework-owners
+/sdlc-copilot/template/                 @framework-owners
+/sdlc-copilot/SKILLS.md                 @framework-owners
+
+# ---- Context library: single named owner ----
+# Stale guardrails do not fail loudly. They produce confident output built on
+# last year's standard. This is the highest-consequence review in the repo.
+/sdlc-copilot/context/                  @context-owner
+
+# ---- Vendor-origin examples: platform review required ----
+/.github/skills/sf-skills-*/            @salesforce-platform-owners
+/.github/prompts/sf-skills-*            @salesforce-platform-owners
